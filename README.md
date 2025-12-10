@@ -1,16 +1,60 @@
-# React + Vite
+# Professional Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive, and interactive personal portfolio website built with React and Tailwind CSS. This project showcases skills, projects, experience, and education in a professionally designed interface.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern UI/UX**: Clean, minimalist design with glassmorphism effects and smooth transitions.
+- **Dark/Light Mode**: Fully supported theme switching with persistent state.
+- **Responsive Design**: Optimized for all devices from mobile to desktop.
+- **Project Gallery**: Grid layout showcasing work with filtering and details.
+- **Experience & Education**: Timeline views for professional history.
+- **Admin Dashboard**: A hidden admin interface to manage content (currently protected by a client-side PIN).
+- **Interactive Elements**: Used `framer-motion` and CSS transitions for a dynamic feel.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend Framework**: React 19
+- **Styling**: Tailwind CSS v4
+- **Routing**: React Router v7
+- **Icons**: Lucide React
+- **Build Tool**: Vite
 
-## Expanding the ESLint configuration
+## 📦 Installation & Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clone the repository:**
+
+   ```bash
+   git clone <repository-url>
+   cd MernStack-Protfolio
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment:**
+   Create a `.env` file in the root directory (if not exists) and add your Admin PIN:
+
+   ```env
+   VITE_ADMIN_PIN=3626
+   ```
+
+4. **Run the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Build for production:**
+
+   ```bash
+   npm run build
+   ```
+
+## Admin Access
+
+Access the admin panel at `/admin`.
+**Note:** Ensure you have configured the `VITE_ADMIN_PIN` in your `.env` file.
