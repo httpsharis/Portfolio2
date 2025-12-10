@@ -21,7 +21,7 @@ export default function Hero() {
                 <a href="#contact" className="bg-neutral-900 dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
                     Contact Me
                 </a>
-                <a href="https://drive.google.com/file/d/19m6Yx7Q-UEdsKgvYmiv7dF1sQY5WpOxz/view?usp=sharing" download className="px-6 py-3 rounded-lg font-medium border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex items-center gap-2">
+                <a href="https://drive.google.com/file/d/19m6Yx7Q-UEdsKgvYmiv7dF1sQY5WpOxz/view?usp=sharing" target='_blank' download className="px-6 py-3 rounded-lg font-medium border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex items-center gap-2">
                     <Download size={20} /> Download CV
                 </a>
                 <a href="https://github.com/httpsharis" target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-lg font-medium border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors flex items-center gap-2">
