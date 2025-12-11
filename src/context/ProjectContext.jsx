@@ -16,7 +16,3 @@ export function ProjectProvider({ children }) {
         </ProjectContext.Provider>
     );
 }
-
-export function useProjects() {
-    return useContext(ProjectContext);
-}
