@@ -1,7 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import { useState } from 'react';
 import { initialProjects } from '../data/initialProjects';
-
-const ProjectContext = createContext();
+import { ProjectContext } from '../utils/ProjectContextUtils';
 
 export function ProjectProvider({ children }) {
     const [projects, setProjects] = useState(initialProjects);

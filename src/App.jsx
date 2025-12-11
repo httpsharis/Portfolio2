@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { ProjectProvider } from './context/ProjectContext';
+import { ExperienceProvider } from './context/ExperienceContext';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 
@@ -11,12 +12,14 @@ import Admin from './pages/Admin';
 function App() {
   return (
     <ProjectProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-      </BrowserRouter>
+      <ExperienceProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </BrowserRouter>
+      </ExperienceProvider>
     </ProjectProvider>
   );
 }

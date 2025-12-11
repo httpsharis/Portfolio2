@@ -1,5 +1,5 @@
 import React from 'react';
-import { useProjects } from '../../context/ProjectContext';
+import { useProjects } from '../../utils/ProjectContextUtils';
 import { Link } from 'react-router';
 import { ExternalLink } from 'lucide-react';
 
@@ -12,8 +12,8 @@ export default function ProjectList() {
 
             <div className="space-y-4">
                 {projects.map((p) => (
-                    <div key={p.id} className="group flex flex-col sm:flex-row sm:items-baseline justify-between p-6 border border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors bg-white dark:bg-transparent">
-                        <div className="mb-4 sm:mb-0">
+                    <div key={p.id} className="group flex flex-col sm:flex-row sm:items-start justify-between gap-6 p-6 border border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors bg-white dark:bg-transparent">
+                        <div className="mb-4 sm:mb-0 flex-1">
                             <a
                                 href={p.link || '#'}
                                 target="_blank"
@@ -25,7 +25,7 @@ export default function ProjectList() {
                             </a>
                             <p className="text-neutral-600 dark:text-neutral-400 text-sm max-w-md">{p.desc}</p>
                         </div>
-                        <div className="flex gap-2 flex-wrap">
+                        <div className="flex gap-2 flex-wrap sm:max-w-[200px] sm:justify-end shrink-0">
                             {p.tags.map((t, index) => (
                                 <span key={index} className="text-xs font-mono text-neutral-500 bg-neutral-100 dark:bg-neutral-900 px-2 py-1 rounded">
                                     {t}
