@@ -9,8 +9,16 @@ export function ProjectProvider({ children }) {
         setProjects((prev) => [{ ...project, id: Date.now() }, ...prev]);
     };
 
+    const updateProject = (updatedProject) => {
+        setProjects((prev) => prev.map((p) => (p.id === updatedProject.id ? updatedProject : p)));
+    };
+
+    const deleteProject = (id) => {
+        setProjects((prev) => prev.filter((p) => p.id !== id));
+    };
+
     return (
-        <ProjectContext.Provider value={{ projects, addProject }}>
+        <ProjectContext.Provider value={{ projects, addProject, updateProject, deleteProject }}>
             {children}
         </ProjectContext.Provider>
     );
