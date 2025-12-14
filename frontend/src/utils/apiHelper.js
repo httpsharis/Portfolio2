@@ -1,12 +1,11 @@
 /**
- * Generic API helper for fetching data.
- * Automates the URL selection based on environment.
- * Development: http://localhost:5000/api
- * Production: /api (Relative path handled by Vercel)
+ * Generic API helper.
+ * For Separate Hosting:
+ * - Development: http://localhost:5000/api
+ * - Production: YOU MUST SET 'VITE_API_URL' in Vercel Environment Variables.
+ *   Example: https://my-backend-project.vercel.app/api
  */
-const BASE_URL = import.meta.env.MODE === 'development'
-    ? 'http://localhost:5000/api'
-    : '/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 export const api = {
     get: async (endpoint) => {
