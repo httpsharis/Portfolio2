@@ -1,8 +1,12 @@
 /**
  * Generic API helper for fetching data.
- * Base URL is assumed to be relative '/api' since we will proxy in vite.config or deploy on same origin.
+ * Automates the URL selection based on environment.
+ * Development: http://localhost:5000/api
+ * Production: /api (Relative path handled by Vercel)
  */
-const BASE_URL = 'http://localhost:5000/api'; // For local dev, explicit URL often helps avoid proxy issues if not set up
+const BASE_URL = import.meta.env.MODE === 'development'
+    ? 'http://localhost:5000/api'
+    : '/api';
 
 export const api = {
     get: async (endpoint) => {
