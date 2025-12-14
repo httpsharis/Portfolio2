@@ -46,12 +46,12 @@ export default function Skills() {
 
             <div className="grid md:grid-cols-2 gap-12">
                 {skillsList.map((skill) => (
-                    <div key={skill.title} className="group relative">
+                    <div key={skill._id} className="group relative">
                         <EditControls
                             variant="overlay"
                             className="opacity-0 group-hover:opacity-100 transition-opacity"
                             onEdit={() => handleEdit(skill)}
-                            onDelete={() => deleteSkillCategory(skill.title)}
+                            onDelete={() => deleteSkillCategory(skill._id)}
                         />
                         <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                             {getIcon(skill.title)} {skill.title}

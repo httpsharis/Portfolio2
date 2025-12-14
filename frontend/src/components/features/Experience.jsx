@@ -40,12 +40,12 @@ export default function Experience() {
             {/* Map over the main array of job experiences */}
             {expData.map((job) => (
 
-                <div key={job.id} className="group mb-8 relative">
+                <div key={job._id} className="group mb-8 relative">
                     <EditControls
                         variant="overlay"
                         className="opacity-0 group-hover:opacity-100 transition-opacity"
                         onEdit={() => handleEdit(job)}
-                        onDelete={() => deleteExperience && deleteExperience(job.id)}
+                        onDelete={() => deleteExperience && deleteExperience(job._id)}
                     />
 
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">

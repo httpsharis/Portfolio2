@@ -1,37 +1,71 @@
-import { createContext, useState } from 'react';
-import { educationData as initialEduData } from '../data/educationData';
-import { certificateData as initialCertData } from '../data/certificateData';
+import { createContext, useState, useEffect } from 'react';
+import { api } from '../utils/apiHelper';
 
 export const EducationContext = createContext();
 
 export function EducationProvider({ children }) {
-    const [educationList, setEducationList] = useState(initialEduData);
-    const [certificateList, setCertificateList] = useState(initialCertData);
+    const [educationList, setEducationList] = useState([]);
+    const [certificateList, setCertificateList] = useState([]);
+
+    useEffect(() => {
+        api.get('/education').then(data => setEducationList(data)).catch(console.error);
+        api.get('/certificates').then(data => setCertificateList(data)).catch(console.error);
+    }, []);
 
     // Education Actions
-    const addEducation = (edu) => {
-        setEducationList((prev) => [{ ...edu, id: Date.now() }, ...prev]);
+    const addEducation = async (edu) => {
+        try {
+            const newItem = await api.post('/education', edu);
+            setEducationList((prev) => [newItem, ...prev]);
+        } catch (error) {
+            console.error(error); alert("Failed to add education");
+        }
     };
 
-    const updateEducation = (updatedEdu) => {
-        setEducationList((prev) => prev.map((item) => (item.id === updatedEdu.id ? updatedEdu : item)));
+    const updateEducation = async (updatedEdu) => {
+        try {
+            const data = await api.put(`/education/${updatedEdu._id}`, updatedEdu);
+            setEducationList((prev) => prev.map((item) => (item._id === data._id ? data : item)));
+        } catch (error) {
+            console.error(error); alert("Failed to update education");
+        }
     };
 
-    const deleteEducation = (id) => {
-        setEducationList((prev) => prev.filter((item) => item.id !== id));
+    const deleteEducation = async (id) => {
+        try {
+            await api.delete(`/education/${id}`);
+            setEducationList((prev) => prev.filter((item) => item._id !== id));
+        } catch (error) {
+            console.error(error); alert("Failed to delete education");
+        }
     };
 
     // Certificate Actions
-    const addCertificate = (cert) => {
-        setCertificateList((prev) => [{ ...cert, id: Date.now() }, ...prev]);
+    const addCertificate = async (cert) => {
+        try {
+            const newItem = await api.post('/certificates', cert);
+            setCertificateList((prev) => [newItem, ...prev]);
+        } catch (error) {
+            console.error(error); alert("Failed to add certificate");
+        }
     };
 
-    const updateCertificate = (updatedCert) => {
-        setCertificateList((prev) => prev.map((item) => (item.id === updatedCert.id ? updatedCert : item)));
+    const updateCertificate = async (updatedCert) => {
+        try {
+            const data = await api.put(`/certificates/${updatedCert._id}`, updatedCert);
+            setCertificateList((prev) => prev.map((item) => (item._id === data._id ? data : item)));
+        } catch (error) {
+            console.error(error); alert("Failed to update certificate");
+        }
     };
 
-    const deleteCertificate = (id) => {
-        setCertificateList((prev) => prev.filter((item) => item.id !== id));
+    const deleteCertificate = async (id) => {
+        try {
+            await api.delete(`/certificates/${id}`);
+            setCertificateList((prev) => prev.filter((item) => item._id !== id));
+        } catch (error) {
+            console.error(error); alert("Failed to delete certificate");
+        }
     };
 
     return (

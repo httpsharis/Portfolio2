@@ -22,7 +22,7 @@ export default function SkillsForm({ initialData, onSave, onCancel }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         onSave({
-            originalTitle: initialData?.title, // To identify which one to update
+            _id: initialData?._id, // IMPORTANT: Pass ID for updates
             title: formData.title,
             items: formData.items.split(',').map(s => s.trim()).filter(Boolean)
         });

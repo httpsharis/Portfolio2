@@ -40,12 +40,12 @@ export default function ProjectList() {
 
             <div className="space-y-4">
                 {projects.map((p) => (
-                    <div key={p.id} className="group relative flex flex-col sm:flex-row sm:items-start justify-between gap-6 p-6 border border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors bg-white dark:bg-transparent">
+                    <div key={p._id} className="group relative flex flex-col sm:flex-row sm:items-start justify-between gap-6 p-6 border border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors bg-white dark:bg-transparent">
 
                         <EditControls
                             variant="overlay"
                             onEdit={() => handleEdit(p)}
-                            onDelete={() => deleteProject && deleteProject(p.id)}
+                            onDelete={() => deleteProject && deleteProject(p._id)}
                         />
 
                         <div className="mb-4 sm:mb-0 flex-1">

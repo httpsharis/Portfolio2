@@ -59,12 +59,12 @@ export default function Education() {
 
             <div className="space-y-10">
                 {educationList.map((item) => (
-                    <div key={item.id} className="group relative">
+                    <div key={item._id} className="group relative">
                         <EditControls
                             variant="overlay"
                             className="opacity-0 group-hover:opacity-100 transition-opacity"
                             onEdit={() => handleEditEdu(item)}
-                            onDelete={() => deleteEducation(item.id)}
+                            onDelete={() => deleteEducation(item._id)}
                         />
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
                             <h3 className="text-lg font-bold text-neutral-900 dark:text-white">{item.degree}</h3>
@@ -83,12 +83,12 @@ export default function Education() {
                 </div>
                 <div className="space-y-6">
                     {certificateList.map((cert) => (
-                        <div key={cert.id} className="group relative">
+                        <div key={cert._id} className="group relative">
                             <EditControls
                                 variant="overlay"
                                 className="opacity-0 group-hover:opacity-100 transition-opacity"
                                 onEdit={() => handleEditCert(cert)}
-                                onDelete={() => deleteCertificate(cert.id)}
+                                onDelete={() => deleteCertificate(cert._id)}
                             />
                             <h3 className="text-lg font-bold text-neutral-900 dark:text-white mb-1">{cert.title}</h3>
                             <p className="text-neutral-600 dark:text-neutral-400">{cert.issuer}</p>
