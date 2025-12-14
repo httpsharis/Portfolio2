@@ -8,7 +8,4 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  build: {
-    outDir: 'build', // Output to 'build' instead of 'dist' for Vercel
-  }
 })
