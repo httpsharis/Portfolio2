@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-    origin: 'https://portfolio2-pi-mocha.vercel.app/api'
+    origin: 'https://portfolio2-pi-mocha.vercel.app'
 }));
 app.use(express.json()); // For parsing JSON bodies
 
