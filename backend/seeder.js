@@ -12,7 +12,11 @@ const SkillCategory = require('./models/SkillCategory');
 dotenv.config();
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio')
+// Connect to MongoDB
+const dbUri = process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio';
+console.log(`Attempting to connect to: ${dbUri.includes('localhost') ? 'Local Database (localhost)' : 'Cloud Database (Atlas)'}`);
+
+mongoose.connect(dbUri)
     .then(() => console.log('MongoDB Connected for Seeding'))
     .catch(err => {
         console.error('MongoDB Connection Error:', err);
