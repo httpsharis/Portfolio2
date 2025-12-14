@@ -27,6 +27,12 @@ app.get('/', (req, res) => {
 const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// For Vercel: Export the app
+module.exports = app;
+
+// Only listen if not running in Vercel (Vercel handles the port binding)
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
