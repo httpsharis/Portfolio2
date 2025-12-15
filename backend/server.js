@@ -18,19 +18,14 @@ app.use(express.json()); // For parsing JSON bodies
 // Database Connection (Cached for Serverless)
 let cachedDb = null;
 
-const connectToDatabase = async () => {
-    if (cachedDb) {
-        return cachedDb;
-    }
-    try {
-        const db = await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio');
-        cachedDb = db;
-        console.log('MongoDB Connected (New Connection)');
-        return db;
-    } catch (err) {
-        console.error('MongoDB connection error:', err);
-    }
-};
+if (cachedDb) {
+    return cachedDb;
+}
+// No try-catch here, let the caller handle it so we see the error!
+const db = await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio');
+cachedDb = db;
+console.log('MongoDB Connected (New Connection)');
+return db;
 
 // Ensure DB is connected for every request
 app.use(async (req, res, next) => {
