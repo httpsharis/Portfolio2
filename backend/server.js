@@ -43,6 +43,20 @@ app.get('/', (req, res) => {
     res.send('API is running...');
 });
 
+// Debug Route: Test DB Connection
+app.get('/api/health', async (req, res) => {
+    try {
+        await connectToDatabase();
+        if (mongoose.connection.readyState === 1) {
+            res.json({ status: 'OK', message: 'Database Connected Successfully', dbName: mongoose.connection.name });
+        } else {
+            res.status(500).json({ status: 'Error', message: 'Database Not Connected', state: mongoose.connection.readyState });
+        }
+    } catch (error) {
+        res.status(500).json({ status: 'Critical Error', message: error.message, stack: error.stack });
+    }
+});
+
 // Import Routes
 const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
